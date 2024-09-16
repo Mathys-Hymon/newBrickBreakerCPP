@@ -1,22 +1,51 @@
 #include "raylib.h"
 #include <iostream>
+#include "GameManager.h"
 
-using namespace std;
+GameManager gameManager;
+
+void Start();
+void Update();
+void Draw();
+void Unload();
 
 int main() {
 
-    
-    cout << "Hello World" << endl;
-
-    InitWindow(300, 300, "My first Raylib window!");
-    SetTargetFPS(60);
+    gameManager = GameManager();
+    Start();
 
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(DARKGREEN);
-        EndDrawing();
+
+        Update();
+        Draw();
     }
 
-    CloseWindow();
+    Unload();
     return 0;
+}
+
+void Start()
+{
+    InitWindow(1000, 850, "brick breaker");
+    SetTargetFPS(60);
+    gameManager.Load();
+}
+
+void Update()
+{
+    gameManager.Update();
+}
+
+void Draw()
+{
+    BeginDrawing();
+    gameManager.Draw();
+    ClearBackground(BLUE);
+    EndDrawing();
+}
+
+void Unload()
+{
+    CloseWindow();
+    gameManager.Unload();
 }
