@@ -1,5 +1,4 @@
 #pragma once
-#include "raylib.h"
 #include "Pad.h"
 
 class Ball
@@ -17,7 +16,7 @@ public:
 
 
 private:
-	float mSpeed = 3;
+	float mSpeed = 150;
 	Vector2 mPos;
 	Vector2 mDirection = {1,-1};
 	float mRadius;

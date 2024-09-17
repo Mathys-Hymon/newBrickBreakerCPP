@@ -9,23 +9,25 @@ void Ball::Initialize(Vector2 newPosition, float newRadius, Color newColor, Pad&
 
 void Ball::Update()
 {
-	if (mPos.x < GetScreenWidth() -mRadius) {
-		mPos.x += mDirection.x * mSpeed;
-	}
-	else {
-		mDirection.x = 1;
-	}
+    mPos.x += mDirection.x * mSpeed * GetFrameTime();
+    mPos.y += mDirection.y * mSpeed * GetFrameTime();
 
-	if (mPos.x > 0 + mRadius) {
-		mDirection.x = -1;
-	}
-
-	if (mPos.y < GetScreenHeight() - mRadius && mPos.y > 0 + mRadius) {
-
-	}
-	else {
-
-	}
+    if (mPos.x - mRadius / 2 < 0) {
+        mPos.x = 0 + mRadius / 2;
+        mDirection.x *= -1;
+    }
+    if (mPos.x + mRadius / 2 > GetScreenWidth()) {
+        mPos.x = GetScreenWidth() - mRadius / 2;
+        mDirection.x *= -1;
+    }
+    if (mPos.y - mRadius / 2 < 0) {
+        mPos.y = 0 + mRadius / 2;
+        mDirection.y *= -1;
+    }
+    if (mPos.y + mRadius / 2 > GetScreenHeight()) {
+        mPos.y = GetScreenHeight() - mRadius / 2;
+        mDirection.y *= -1;
+    }
 	
 }
 
