@@ -89,7 +89,7 @@ void Ball::CheckCollision()
             mVelocity.x = mMaxVelocity * (fabsf(mPlayer->GetPos().x - mPos.x) / (mPlayer->GetSize().x / 2));
         }
 
-        mMaxVelocity += 0.5f;
+        mMaxVelocity += 0.1f;
     }
 }
 

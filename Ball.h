@@ -23,7 +23,7 @@ public:
 
 private:
 	float mSpeed = 300;
-	float mMaxVelocity = 2;
+	float mMaxVelocity = 1.3f;
 	float mRadius;
 	Vector2 mPos;
 	Vector2 mVelocity = {1,-1};

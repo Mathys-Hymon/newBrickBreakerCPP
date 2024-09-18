@@ -12,7 +12,7 @@ void Unload();
 int main() {
     Start();
 
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose() && !mGameManager.GameShouldClose()) {
 
         Update();
         Draw();
