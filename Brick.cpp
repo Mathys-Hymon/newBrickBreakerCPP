@@ -14,12 +14,14 @@ Brick::Brick(Vector2 newPos, Vector2 newSize, Color newColor, Ball* newBall)
 
 void Brick::Draw() const
 {
-    DrawRectangle((mPos.x - mSize.x / 2) + 1, (mPos.y - mSize.y / 2) + 1, mSize.x - 2, mSize.y - 2, mColor);
+    if (mAlive) {
+        DrawRectangle((mPos.x - mSize.x / 2) + 1, (mPos.y - mSize.y / 2) + 1, mSize.x - 2, mSize.y - 2, mColor);
+    }
 }
 
 bool Brick::CheckCollision()
 {
-	if (mBall != nullptr) {
+    if (mBall != nullptr && mAlive) {
         if (mPos.x - (mSize.x / 2) < mBall->GetPos().x + (mBall->GetRadius() / 2) &&
             mPos.x + (mSize.x / 2) > mBall->GetPos().x - (mBall->GetRadius() / 2) &&
             mPos.y - (mSize.y / 2) < mBall->GetPos().y + (mBall->GetRadius() / 2) &&
@@ -39,19 +41,21 @@ bool Brick::CheckCollision()
             // HAUT
             if (mBall->GetPosition().y - (mBall->GetRadius() / 2) < mSize.y - (mSize.y / 2)) {
                 mBall->SetVelocity({ mBall->GetVelocity().x, -mBall->GetVelocity().y });
-               // mBall->SetPosition({ mBall->GetPosition().x, mPos.y - ((mSize.y + mBall->GetRadius()) / 2) });
+                // mBall->SetPosition({ mBall->GetPosition().x, mPos.y - ((mSize.y + mBall->GetRadius()) / 2) });
             }
             // BAS
             else if (mBall->GetPosition().y + (mBall->GetRadius() / 2) > mSize.y + (mSize.y / 2)) {
                 mBall->SetVelocity({ mBall->GetVelocity().x, -mBall->GetVelocity().y });
-             //   mBall->SetPosition({ mBall->GetPosition().x, mPos.y + ((mSize.y + mBall->GetRadius()) / 2) });
+                //   mBall->SetPosition({ mBall->GetPosition().x, mPos.y + ((mSize.y + mBall->GetRadius()) / 2) });
             }
-            }
+            mAlive = false;
             return true;
         }
         else {
             return false;
         }
+    }
+
 }
 
 bool Brick::GetAlive()

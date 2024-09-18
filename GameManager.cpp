@@ -7,7 +7,7 @@ GameManager::GameManager()
 
 void GameManager::Load()
 {
-	mPlayer = Pad({ 100,(float)GetScreenHeight()-100}, {100,50}, 30, BLACK);
+	mPlayer = Pad({ 100,(float)GetScreenHeight()-100}, {150,30}, 30, BLACK);
 	mBall = Ball({ 500,500 }, 10, WHITE, &mPlayer);
 	SpawnBricks(7);
 }
