@@ -2,7 +2,7 @@
 #include <iostream>
 #include "GameManager.h"
 
-GameManager gameManager;
+GameManager mGameManager;
 
 void Start();
 void Update();
@@ -10,8 +10,6 @@ void Draw();
 void Unload();
 
 int main() {
-
-    gameManager = GameManager();
     Start();
 
     while (!WindowShouldClose()) {
@@ -28,18 +26,19 @@ void Start()
 {
     InitWindow(1000, 850, "brick breaker");
     SetTargetFPS(60);
-    gameManager.Load();
+    mGameManager = GameManager();
+    mGameManager.Load();
 }
 
 void Update()
 {
-    gameManager.Update();
+    mGameManager.Update();
 }
 
 void Draw()
 {
     BeginDrawing();
-    gameManager.Draw();
+    mGameManager.Draw();
     ClearBackground(BLUE);
     EndDrawing();
 }
@@ -47,5 +46,5 @@ void Draw()
 void Unload()
 {
     CloseWindow();
-    gameManager.Unload();
+    mGameManager.Unload();
 }

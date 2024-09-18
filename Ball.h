@@ -4,21 +4,29 @@
 class Ball
 {
 public:
-	void Initialize(Vector2 newPosition, float newRadius, Color newColor,Pad& pad);
+
+	Ball();
+	Ball(Vector2 newPosition, float newRadius, Color newColor, Pad* newPlayer);
+	void SetPosition(Vector2 newPos);
+	void SetVelocity(Vector2 newVelocity);
+	Vector2 GetPos() const;
+	Vector2 GetVelocity() const;
+	float GetRadius() const;
 	void Update();
-	void Draw();
+	void Draw() const;
 	void Unload();
+	void CheckCollision();
+	void ResetBall();
 
-	void FlipX();
-	void FlipY();
-
-	Vector2 GetPosition();
+	Vector2 GetPosition() const; 
 
 
 private:
-	float mSpeed = 150;
-	Vector2 mPos;
-	Vector2 mDirection = {1,-1};
+	float mSpeed = 300;
+	float mMaxVelocity = 2;
 	float mRadius;
+	Vector2 mPos;
+	Vector2 mVelocity = {1,-1};
 	Color mColor = RED;
+	Pad* mPlayer;
 };

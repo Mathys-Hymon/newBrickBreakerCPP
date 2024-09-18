@@ -3,7 +3,10 @@
 class Pad
 {
 public:
-	void Initialize(Vector2 newPos, Vector2 newSize, float newMaxSpeed, Color newColor);
+	Pad();
+	Pad(Vector2 newPos, Vector2 newSize, float newMaxSpeed, Color newColor);
+	Vector2 GetPos();
+	Vector2 GetSize();
 	void Update();
 	void Draw();
 	void Unload();

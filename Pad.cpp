@@ -1,13 +1,26 @@
 #include "pad.h"
 
 
-
-void Pad::Initialize(Vector2 newPos, Vector2 newSize, float newMaxSpeed, Color newColor)
+Pad::Pad()
 {
-	mPos = newPos;
-	mSize = newSize;
-	mMaxSpeed = newMaxSpeed;
-	mColor = newColor;
+}
+
+Pad::Pad(Vector2 newPos, Vector2 newSize, float newMaxSpeed, Color newColor)
+{
+    mPos = newPos;
+    mSize = newSize;
+    mMaxSpeed = newMaxSpeed;
+    mColor = newColor;
+}
+
+Vector2 Pad::GetPos()
+{
+    return mPos;
+}
+
+Vector2 Pad::GetSize()
+{
+    return mSize;
 }
 
 void Pad::Update()
